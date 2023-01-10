@@ -1,0 +1,43 @@
+vim.g.mapleader = " "
+
+function map(mode, key, effects)
+    vim.keymap.set(mode, key, effects, { noremap = true, silent = false })
+end
+
+map('n', "<F29>", ":w <CR>:split<CR>:resize 13<CR>:execute \'terminal gcc -Wall % -o %< && %<\'<CR>:startinsert<CR>")
+map('t', "<Esc>", "<C-\\><C-n>")
+map('t', "<S-Up>", "<Esc><S-Up>")
+map('i', "{<CR>", "{<CR>}<Esc><S-O>")
+map('n', "<S-Down>", "<C-E>")
+map('n', "<S-Up>", "<C-Y>")
+
+map('', "<C-Up>", "<C-U>")
+map('', "<C-Down>", "<C-D>")
+map('n', "<C-k>", "<C-U>")
+map('n', "<C-j>", "<C-D>")
+
+map('v', "<tab>", "<S->><S-V>")
+map('v', "<S-tab>", "<S-<><S-V>")
+map('n', "<leader>`", ":sp<CR>:term<CR>:resize 13<CR>:startinsert<CR>")
+map('n', "<C-s>", ":w<CR>")
+map('i', "<C-s>", "<Esc>:w<CR>")
+map('n', "n", "nzz")
+map('n', "p", "pzz")
+
+map('n', "<leader>n", ":tabnew<CR>")
+map('n', "<leader><Down>", "<C-W><Down>")
+map('n', "<leader><Up>", "<C-W><Up>")
+map('n', "<leader><Right>", "<C-W><Right>")
+map('n', "<leader><Left>", "<C-W><Left>")
+--map('n', "<leader><Left>", ":tabprevious<CR>")
+-- map('n', "<leader><Right>", ":tabnext<CR>")
+map('n', "<leader>1", "1gt")
+map('n', "<leader>2", "2gt")
+map('n', "<leader>3", "3gt")
+map('n', "<leader>4", "4gt")
+map('n', "<leader>5", "5gt")
+map('n', "<leader>6", "1gt")
+map('n', "<leader>7", "2gt")
+map('n', "<leader>8", "3gt")
+map('n', "<leader>9", "4gt")
+map('n', "<leader>0", "10gt")
