@@ -16,6 +16,9 @@ return require('packer').startup(function(use)
     use 'Ardakilic/vim-tomorrow-night-theme'
     use 'https://github.com/rhysd/vim-clang-format'
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end}
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {

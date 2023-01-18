@@ -18,7 +18,7 @@ map('n', "<C-j>", "<C-D>")
 
 map('v', "<tab>", "<S->><S-V>")
 map('v', "<S-tab>", "<S-<><S-V>")
-map('n', "<leader>`", ":sp<CR>:term<CR>:resize 13<CR>:startinsert<CR>")
+map('n', "<leader>`", ":ToggleTerm<CR>")
 map('n', "<C-s>", ":w<CR>")
 map('i', "<C-s>", "<Esc>:w<CR>")
 map('n', "n", "nzz")
