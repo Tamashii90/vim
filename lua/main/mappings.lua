@@ -6,6 +6,7 @@ end
 
 map('n', "<F29>", ":w <CR>:split<CR>:resize 13<CR>:execute \'terminal gcc -Wall % -o %< && %<\'<CR>:startinsert<CR>")
 map('t', "<Esc>", "<C-\\><C-n>")
+map ('', "<C-_>", ":norm ^i// <CR>")
 map('t', "<S-Up>", "<Esc><S-Up>")
 map('i', "{<CR>", "{<CR>}<Esc><S-O>")
 map('n', "<S-Down>", "<C-E>")
