@@ -8,19 +8,14 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- format on save
-  vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-
-  -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   -- vim.keymap.set("n", "gl", vim.diagnostic.open_float, bufopts) // This is handled by telescope!
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts) // This is handled by telescope!
-  -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<leader>k', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set('n', '<leader>wl', function()
@@ -51,6 +46,20 @@ require('lspconfig').lua_ls.setup {
   on_attach = on_attach
 }
 
+require('lspconfig').eslint.setup({
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+    on_attach(client, bufnr)
+  end,
+})
+
+require('lspconfig').tsserver.setup({
+  on_attach = on_attach
+})
+
 vim.diagnostic.config({
   virtual_text = true,
   signs = false,
@@ -59,16 +68,6 @@ vim.diagnostic.config({
   severity_sort = false,
   float = true,
 })
-
-require('lspconfig').tsserver.setup {
-  on_attach = on_attach,
-  settings = {
-    preferences = {
-      quoteStyle = "double"
-    }
-  }
-}
-
 
 local servers = { 'clangd' }
 for _, server in pairs(servers) do

@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 
 local function map(mode, key, effects)
-  vim.keymap.set(mode, key, effects, { noremap = true, silent = false })
+  vim.keymap.set(mode, key, effects, { noremap = true, silent = true })
 end
 
 map('n', "<F29>",

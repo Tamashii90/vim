@@ -7,7 +7,16 @@ vim.g.lightline = { ['colorscheme'] = 'nightfly' }
 vim.cmd.colorscheme("vscode")
 vim.opt.background = 'light'
 
-vim.cmd [[autocmd BufEnter * execute 'lcd ' . expand('%:p:h')]]
+-- If terminal, start insert mode else lcd to file's directory
+vim.api.nvim_create_autocmd({ "BufEnter", "TermEnter" }, {
+  callback = function(arg)
+    if not string.match(arg.file, "term:*") then
+      vim.cmd [[execute 'lcd ' . expand('%:p:h')]]
+    else
+      vim.cmd("startinsert")
+    end
+  end
+})
 
 vim.opt.number = true
 vim.opt.termguicolors = true
