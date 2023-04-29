@@ -10,6 +10,7 @@ return require('packer').startup(function(use)
     }
     use 'itchyny/lightline.vim'
     use 'morhetz/gruvbox'
+    use 'Mofiqul/vscode.nvim'
     use 'chiendo97/intellij.vim'
     use 'bluz71/vim-nightfly-guicolors'
     use 'ayu-theme/ayu-vim'
