@@ -28,6 +28,26 @@ map('i', "<C-s>", "<Esc>:w<CR>")
 map('n', "n", "nzz")
 map('n', "p", "pzz")
 
+-- vim.cmd[[imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>']]
+-- vim.cmd[[inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>]]
+-- vim.cmd[[snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>]]
+-- vim.cmd[[snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>]]
+
+-- vim.keymap.set({ "i", "s" }, "<c-k>", function ()
+--   if require('luasnip').expand_or_jumpable() then
+--     require('luasnip').expand_or_jump()
+--   end
+-- end, { silent = true})
+
+-- vim.keymap.set({ "i", "s" }, "<c-k>", function ()
+--   require('luasnip').jump(1)
+-- end, { silent = true})
+
+-- For changing choices in choiceNodes (not strictly necessary for a basic setup).
+-- imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
+-- smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
+--
+
 map('n', "<leader>n", ":tabnew<CR>")
 
 map('n', "<leader><Down>", "<C-W><Down>")

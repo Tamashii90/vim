@@ -19,10 +19,17 @@ vim.api.nvim_create_autocmd({ "BufEnter", "TermEnter" }, {
 })
 
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.signcolumn = 'yes'
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- OR setup with some options
+require("nvim-tree").setup()
 vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.tabstop = 2
@@ -31,6 +38,7 @@ vim.opt.expandtab = true
 vim.opt.smarttab = true
 
 vim.cmd [[autocmd FileType javascript ClangFormatAutoDisable]]
+vim.cmd [[autocmd TermOpen * setlocal nonumber norelativenumber]]
 vim.g['clang_format#code_style'] = "google"
 vim.g['clang_format#auto_format_on_insert_leave'] = 0
 vim.g['clang_format#auto_format'] = 1

@@ -12,6 +12,9 @@ return require('packer').startup(function(use)
   use 'morhetz/gruvbox'
   use 'Mofiqul/vscode.nvim'
   use 'chiendo97/intellij.vim'
+  use 'nvim-tree/nvim-web-devicons'
+  use 'nvim-tree/nvim-tree.lua'
+  use 'onsails/lspkind.nvim'
   use 'bluz71/vim-nightfly-guicolors'
   use 'ayu-theme/ayu-vim'
   use 'Ardakilic/vim-tomorrow-night-theme'
@@ -25,6 +28,7 @@ return require('packer').startup(function(use)
     requires = {
       -- LSP Support
       { 'neovim/nvim-lspconfig' },
+      { 'jose-elias-alvarez/null-ls.nvim' },
       { 'williamboman/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim' },
 
@@ -32,11 +36,10 @@ return require('packer').startup(function(use)
       { 'hrsh7th/nvim-cmp' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
-      { 'saadparwaiz1/cmp_luasnip' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lua' },
-
-      { 'L3MON4D3/LuaSnip' },
+      { "L3MON4D3/LuaSnip" },
+      { 'saadparwaiz1/cmp_luasnip'}
     }
   }
 end)
