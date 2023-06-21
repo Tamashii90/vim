@@ -9,7 +9,9 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
   use 'itchyny/lightline.vim'
+  use 'folke/tokyonight.nvim'
   use 'morhetz/gruvbox'
+  use 'drewtempelmeyer/palenight.vim'
   use 'Mofiqul/vscode.nvim'
   use 'chiendo97/intellij.vim'
   use 'nvim-tree/nvim-web-devicons'
@@ -17,6 +19,7 @@ return require('packer').startup(function(use)
   use 'onsails/lspkind.nvim'
   use 'bluz71/vim-nightfly-guicolors'
   use 'ayu-theme/ayu-vim'
+  use 'brenoprata10/nvim-highlight-colors'
   use 'Ardakilic/vim-tomorrow-night-theme'
   use 'https://github.com/rhysd/vim-clang-format'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -35,11 +38,12 @@ return require('packer').startup(function(use)
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },
       { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-cmdline' },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lua' },
       { "L3MON4D3/LuaSnip" },
-      { 'saadparwaiz1/cmp_luasnip'}
+      { 'saadparwaiz1/cmp_luasnip' }
     }
   }
 end)

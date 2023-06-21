@@ -4,8 +4,8 @@ vim.g.lightline = { ['colorscheme'] = 'nightfly' }
 -- vim.g.lightline = {['colorscheme']= 'gruvbox'}
 -- vim.cmd.colorscheme("gruvbox")
 -- vim.cmd.colorscheme("nightfly")
-vim.cmd.colorscheme("vscode")
-vim.opt.background = 'light'
+vim.cmd.colorscheme('tokyonight-moon')
+-- vim.opt.background = 'light'
 
 -- If terminal, start insert mode else lcd to file's directory
 vim.api.nvim_create_autocmd({ "BufEnter", "TermEnter" }, {
@@ -17,6 +17,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "TermEnter" }, {
     end
   end
 })
+
+require('nvim-highlight-colors').setup {
+  render = 'foreground',
+  enable_tailwind = true
+}
 
 vim.opt.number = true
 vim.opt.relativenumber = true

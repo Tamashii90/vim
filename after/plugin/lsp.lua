@@ -2,16 +2,6 @@
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 
-local lsp_formatting = function(bufnr)
-  vim.lsp.buf.format({
-    filter = function(client)
-      -- apply whatever logic you want (in this example, we'll only use null-ls)
-      return client.name == "null-ls"
-    end,
-    bufnr = bufnr,
-  })
-end
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -34,22 +24,14 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format() end, bufopts)
-
-  -- if you want to set up formatting on save, you can use this as a callback
-  local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-  -- add to your shared on_attach callback
-  if client.supports_method("textDocument/formatting") then
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.format()
-      end,
-    })
-  end
+  vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 20000 }) end, bufopts)
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    buffer = bufnr,
+    callback = function()
+      -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
+      vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 20000 })
+    end,
+  })
 end
 
 
@@ -57,7 +39,7 @@ local null_ls = require("null-ls")
 
 null_ls.setup({
   sources = {
-    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettierd,
   },
   on_attach = on_attach,
 })
@@ -173,8 +155,8 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'luasnip' }, -- For luasnip users.
   }, {
-      { name = 'buffer' },
-    }),
+    { name = 'buffer' },
+  }),
   formatting = {
     format = function(_, vim_item)
       vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
@@ -191,6 +173,16 @@ cmp.setup.cmdline({ '/', '?' }, {
   }
 })
 
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
 vim.diagnostic.config({
   virtual_text = true,
   signs = false,
@@ -200,7 +192,7 @@ vim.diagnostic.config({
   float = true,
 })
 
-local servers = { 'clangd' }
+local servers = { 'clangd', 'rust_analyzer' }
 for _, server in pairs(servers) do
   require('lspconfig')[server].setup {
     on_attach = on_attach,
