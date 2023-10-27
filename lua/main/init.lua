@@ -2,9 +2,12 @@ require("main.mappings")
 
 vim.g.lightline = { ['colorscheme'] = 'nightfly' }
 -- vim.g.lightline = {['colorscheme']= 'gruvbox'}
+
 -- vim.cmd.colorscheme("gruvbox")
 -- vim.cmd.colorscheme("nightfly")
+-- vim.cmd.colorscheme("intellij")
 vim.cmd.colorscheme('tokyonight-moon')
+
 -- vim.opt.background = 'light'
 
 -- If terminal, start insert mode else lcd to file's directory
@@ -33,8 +36,6 @@ vim.opt.signcolumn = 'yes'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- OR setup with some options
-require("nvim-tree").setup()
 vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.tabstop = 2
