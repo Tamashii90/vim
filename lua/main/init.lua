@@ -1,7 +1,12 @@
 require("main.mappings")
 
-vim.g.lightline = { ['colorscheme'] = 'nightfly' }
--- vim.g.lightline = {['colorscheme']= 'gruvbox'}
+vim.g.lightline = {
+  --  component = {
+  --    filename = '%n:%t',
+  --  },
+  colorscheme = 'nightfly'
+  -- colorscheme = 'gruvbox'
+}
 
 -- vim.cmd.colorscheme("gruvbox")
 -- vim.cmd.colorscheme("nightfly")
@@ -25,7 +30,6 @@ require('nvim-highlight-colors').setup {
   render = 'foreground',
   enable_tailwind = true
 }
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = true
@@ -43,6 +47,13 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 
+-- Set transparent background
+vim.cmd('highlight Normal ctermbg=none guibg=none')
+vim.cmd('highlight NormalNC ctermbg=none guibg=none')
+vim.cmd('highlight NonText ctermbg=none guibg=none')
+vim.cmd('highlight SignColumn guibg=none')
+
+vim.cmd("autocmd VimEnter * Root")
 vim.cmd [[autocmd FileType javascript ClangFormatAutoDisable]]
 vim.cmd [[autocmd TermOpen * setlocal nonumber norelativenumber]]
 vim.g['clang_format#code_style'] = "google"
