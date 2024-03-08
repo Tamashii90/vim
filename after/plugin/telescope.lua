@@ -5,9 +5,6 @@ require('telescope').setup({
 })
 local builtin = require('telescope.builtin')
 
--- Root of current project I'm working on
-local curr_root = "/media/linux/support/swe_projects/my-mediasoup"
-
 -- vim.api.nvim_set_hl(0, 'TelescopeSelection', {fg='#dddddd', bg='#333333', bold = true})
 -- vim.api.nvim_set_hl(0, 'TelescopeMatching', {fg='#6dd191', bold = true})
 -- vim.api.nvim_set_hl(0, 'TelescopeSelectionCaret', {bg = '#333333', fg='#dd0000', bold = true})

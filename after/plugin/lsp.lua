@@ -18,6 +18,8 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 20000 }) end, bufopts)
   vim.api.nvim_create_autocmd("BufWritePre", {
     buffer = bufnr,
