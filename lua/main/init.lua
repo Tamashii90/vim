@@ -1,40 +1,37 @@
 require("main.mappings")
 
+local curr_color = "tokyonight-moon"
+-- "onehalflight"
+-- "gruvbox"
+-- "nightfly"
+-- "intellij"
+-- "PaperColor"
+-- "tokyonight-moon"
+-- "vscode"
+
+local bg_light = false
+
+vim.cmd.colorscheme(curr_color)
+if (bg_light) then
+  vim.opt.background = "light"
+end
+
+-- Set transparent background
+if (not bg_light) then
+  vim.cmd('highlight Normal ctermbg=none guibg=none')
+  vim.cmd('highlight NormalNC ctermbg=none guibg=none')
+  vim.cmd('highlight NonText ctermbg=none guibg=none')
+  vim.cmd('highlight SignColumn guibg=none')
+  vim.cmd('highlight LineNr ctermfg=darkgray guifg=darkgray')
+end
+
 vim.g.lightline = {
   --  component = {
   --    filename = '%n:%t',
   --  },
-  --colorscheme = 'PaperColor'
-  colorscheme = 'nightfly'
-  -- colorscheme = 'gruvbox'
+  colorscheme = "tokyonight"
 }
 
-
--- vim.cmd.colorscheme("onehalflight")
--- vim.cmd.colorscheme("gruvbox")
--- vim.cmd.colorscheme("nightfly")
-vim.cmd.colorscheme("intellij")
--- vim.cmd.colorscheme('tokyonight-moon')
--- vim.cmd.colorscheme('PaperColor')
---vim.cmd.colorscheme('vscode')
-
-vim.opt.background = 'light'
-
--- If terminal, start insert mode else lcd to file's directory
-vim.api.nvim_create_autocmd({ "BufEnter", "TermEnter" }, {
-  callback = function(arg)
-    if not string.match(arg.file, "term:*") then
-      vim.cmd [[execute 'lcd ' . expand('%:p:h')]]
-    else
-      vim.cmd("startinsert")
-    end
-  end
-})
-
-require('nvim-highlight-colors').setup {
-  render = 'foreground',
-  enable_tailwind = true
-}
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = true
@@ -52,12 +49,22 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 
--- Set transparent background
--- vim.cmd('highlight Normal ctermbg=none guibg=none')
--- vim.cmd('highlight NormalNC ctermbg=none guibg=none')
--- vim.cmd('highlight NonText ctermbg=none guibg=none')
--- vim.cmd('highlight SignColumn guibg=none')
--- vim.cmd('highlight LineNr ctermfg=darkgray guifg=darkgray')
+-- If terminal, start insert mode else lcd to file's directory
+vim.api.nvim_create_autocmd({ "BufEnter", "TermEnter" }, {
+  callback = function(arg)
+    if not string.match(arg.file, "term:*") then
+      vim.cmd [[execute 'lcd ' . expand('%:p:h')]]
+    else
+      vim.cmd("startinsert")
+    end
+  end
+})
+
+require('nvim-highlight-colors').setup {
+  render = 'foreground',
+  enable_tailwind = true
+}
+
 
 vim.cmd("autocmd VimEnter * Root")
 vim.cmd [[autocmd FileType javascript ClangFormatAutoDisable]]
