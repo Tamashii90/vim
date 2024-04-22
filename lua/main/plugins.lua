@@ -5,14 +5,16 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', tag = '0.1.6',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
   use 'itchyny/lightline.vim'
   use 'folke/tokyonight.nvim'
   use 'morhetz/gruvbox'
+  use { 'sonph/onehalf', rtp = 'vim' }
   use 'drewtempelmeyer/palenight.vim'
   use 'Mofiqul/vscode.nvim'
+  use 'NLKNguyen/papercolor-theme'
   use 'chiendo97/intellij.vim'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-tree/nvim-tree.lua'

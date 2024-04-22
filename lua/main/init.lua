@@ -4,16 +4,21 @@ vim.g.lightline = {
   --  component = {
   --    filename = '%n:%t',
   --  },
+  --colorscheme = 'PaperColor'
   colorscheme = 'nightfly'
   -- colorscheme = 'gruvbox'
 }
 
+
+-- vim.cmd.colorscheme("onehalflight")
 -- vim.cmd.colorscheme("gruvbox")
 -- vim.cmd.colorscheme("nightfly")
--- vim.cmd.colorscheme("intellij")
-vim.cmd.colorscheme('tokyonight-moon')
+vim.cmd.colorscheme("intellij")
+-- vim.cmd.colorscheme('tokyonight-moon')
+-- vim.cmd.colorscheme('PaperColor')
+--vim.cmd.colorscheme('vscode')
 
--- vim.opt.background = 'light'
+vim.opt.background = 'light'
 
 -- If terminal, start insert mode else lcd to file's directory
 vim.api.nvim_create_autocmd({ "BufEnter", "TermEnter" }, {
@@ -40,7 +45,7 @@ vim.opt.signcolumn = 'yes'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.opt.clipboard = 'unnamedplus'
+-- vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -48,16 +53,17 @@ vim.opt.expandtab = true
 vim.opt.smarttab = true
 
 -- Set transparent background
-vim.cmd('highlight Normal ctermbg=none guibg=none')
-vim.cmd('highlight NormalNC ctermbg=none guibg=none')
-vim.cmd('highlight NonText ctermbg=none guibg=none')
-vim.cmd('highlight SignColumn guibg=none')
+-- vim.cmd('highlight Normal ctermbg=none guibg=none')
+-- vim.cmd('highlight NormalNC ctermbg=none guibg=none')
+-- vim.cmd('highlight NonText ctermbg=none guibg=none')
+-- vim.cmd('highlight SignColumn guibg=none')
+-- vim.cmd('highlight LineNr ctermfg=darkgray guifg=darkgray')
 
 vim.cmd("autocmd VimEnter * Root")
 vim.cmd [[autocmd FileType javascript ClangFormatAutoDisable]]
 vim.cmd [[autocmd TermOpen * setlocal nonumber norelativenumber]]
-vim.g['clang_format#code_style'] = "google"
-vim.g['clang_format#auto_format_on_insert_leave'] = 0
-vim.g['clang_format#auto_format'] = 1
-vim.g['clang_format#style_options'] = { ["AllowShortIfStatementsOnASingleLine"] = "true" }
-vim.g['clang_format#detect_style_file'] = 1
+-- vim.g['clang_format#code_style'] = "google"
+-- vim.g['clang_format#auto_format_on_insert_leave'] = 0
+-- vim.g['clang_format#auto_format'] = 1
+-- vim.g['clang_format#style_options'] = { ["AllowShortIfStatementsOnASingleLine"] = "true" }
+-- vim.g['clang_format#detect_style_file'] = 1
