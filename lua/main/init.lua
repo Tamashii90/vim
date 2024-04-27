@@ -1,6 +1,7 @@
 require("main.mappings")
 
-local curr_color = "tokyonight-moon"
+local dark_mode = true
+local curr_color = dark_mode and "tokyonight-moon" or "tokyonight-day"
 -- "onehalflight"
 -- "gruvbox"
 -- "nightfly"
@@ -9,15 +10,13 @@ local curr_color = "tokyonight-moon"
 -- "tokyonight-moon"
 -- "vscode"
 
-local bg_light = false
-
 vim.cmd.colorscheme(curr_color)
-if (bg_light) then
+if (not dark_mode) then
   vim.opt.background = "light"
 end
 
 -- Set transparent background
-if (not bg_light) then
+if (dark_mode) then
   vim.cmd('highlight Normal ctermbg=none guibg=none')
   vim.cmd('highlight NormalNC ctermbg=none guibg=none')
   vim.cmd('highlight NonText ctermbg=none guibg=none')
