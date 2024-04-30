@@ -10,6 +10,9 @@ local curr_color = dark_mode and "tokyonight-moon" or "tokyonight-day"
 -- "tokyonight-moon"
 -- "vscode"
 
+-- Access this in neovide.lua
+vim.g.dark_mode = dark_mode
+
 vim.cmd.colorscheme(curr_color)
 if (not dark_mode) then
   vim.opt.background = "light"
@@ -47,6 +50,10 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smarttab = true
+
+if vim.g.neovide then
+  require("main.neovide")
+end
 
 -- If terminal, start insert mode else lcd to file's directory
 vim.api.nvim_create_autocmd({ "BufEnter", "TermEnter" }, {
